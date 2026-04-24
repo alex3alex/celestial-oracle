@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celestial Oracle — Перестаньте гадать. Начните декодировать свою судьбу.</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Noto+Serif:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Manrope', 'sans-serif'],
+                        serif: ['Noto Serif', 'serif'],
+                    },
+                    colors: {
+                        'cosmic-dark': '#0a0a0f',
+                        'cosmic-purple': '#1a1a2e',
+                        'gold': '#d4af37',
+                        'gold-light': '#f4cf67',
+                    },
+                    animation: {
+                        'twinkle': 'twinkle 3s ease-in-out infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        twinkle: {
+                            '0%, 100%': { opacity: '0.3' },
+                            '50%': { opacity: '1' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #0a0a0f 100%);
+            min-height: 100vh;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+
+        .glow-text {
+            text-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
+        }
+
+        .card-glow {
+            box-shadow: 0 0 60px rgba(212, 175, 55, 0.1);
+        }
+
+        .gradient-border {
+            background: linear-gradient(135deg, #d4af37, #f4cf67, #d4af37);
+            padding: 2px;
+            border-radius: 16px;
+        }
+
+        .gradient-border-inner {
+            background: #0a0a0f;
+            border-radius: 14px;
+        }
+    </style>
+</head>
+<body class="text-white font-sans antialiased">
+    <!-- Stars Background -->
+    <div class="stars" id="stars"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-cosmic-dark/80 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">✨</span>
+                    <span class="font-serif font-semibold text-lg">Celestial Oracle</span>
+                </div>
+                <a href="https://t.me/Celestial_OracleBot" target="_blank"
+                   class="bg-gold text-cosmic-dark px-6 py-2 rounded-full font-semibold hover:bg-gold-light transition-all">
+                    Открыть бота
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative z-10 min-h-screen flex items-center justify-center px-4 pt-16">
+        <div class="max-w-5xl mx-auto text-center">
+            <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 glow-text">
+                Перестаньте гадать.<br>
+                <span class="text-gold">Начните декодировать свою судьбу</span>
+            </h1>
+            <p class="text-lg sm:text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                Понимание без мистики. Рост без сверхусилий.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://t.me/Celestial_OracleBot" target="_blank"
+                   class="gradient-border">
+                    <div class="gradient-border-inner px-8 py-4 font-semibold hover:bg-cosmic-purple/50 transition-all">
+                        🔮 Начать бесплатно
+                    </div>
+                </a>
+                <a href="#pricing"
+                   class="border border-gold/30 text-gold px-8 py-4 rounded-full font-semibold hover:bg-gold/10 transition-all">
+                    Смотреть тарифы
+                </a>
+            </div>
+
+            <!-- Trust Badges -->
+            <div class="mt-16 flex flex-wrap justify-center gap-8 text-gray-400">
+                <div class="flex items-center gap-2">
+                    <span class="text-gold">✦</span>
+                    <span>98% ясности</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="text-gold">✦</span>
+                    <span>50,000+ пользователей</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="text-gold">✦</span>
+                    <span>4.9★ рейтинг</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pain Points Section -->
+    <section class="relative z-10 py-24 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-center mb-16">
+                Знакомо?
+            </h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-cosmic-purple/30 border border-white/10 rounded-2xl p-6 card-glow">
+                    <div class="text-3xl mb-4">🌀</div>
+                    <h3 class="font-serif text-xl font-semibold mb-2 text-gold">Не знаю, куда идти</h3>
+                    <p class="text-gray-400">Кажется, что все вокруг знают свой путь, а вы блуждаете в тумане.</p>
+                </div>
+                <div class="bg-cosmic-purple/30 border border-white/10 rounded-2xl p-6 card-glow">
+                    <div class="text-3xl mb-4">⏰</div>
+                    <h3 class="font-serif text-xl font-semibold mb-2 text-gold">Упускаю возможности</h3>
+                    <p class="text-gray-400">Шансы проходят мимо, и вы понимаете это только постфактум.</p>
+                </div>
+                <div class="bg-cosmic-purple/30 border border-white/10 rounded-2xl p-6 card-glow">
+                    <div class="text-3xl mb-4">💔</div>
+                    <h3 class="font-serif text-xl font-semibold mb-2 text-gold">В отношениях хаос</h3>
+                    <p class="text-gray-400">Одни и те же сценарии повторяются снова и снова.</p>
+                </div>
+                <div class="bg-cosmic-purple/30 border border-white/10 rounded-2xl p-6 card-glow">
+                    <div class="text-3xl mb-4">🎭</div>
+                    <h3 class="font-serif text-xl font-semibold mb-2 text-gold">Чувствую себя застрявшим</h3>
+                    <p class="text-gray-400">Энергия есть, но она где-то застревает и не реализуется.</p>
+                </div>
+                <div class="bg-cosmic-purple/30 border border-white/10 rounded-2xl p-6 card-glow">
+                    <div class="text-3xl mb-4">🌑</div>
+                    <h3 class="font-serif text-xl font-semibold mb-2 text-gold">Нет цели</h3>
+                    <p class="text-gray-400">Дни похожи один на другой, а смысла не видно.</p>
+                </div>
+                <div class="bg-cosmic-purple/30 border border-white/10 rounded-2xl p-6 card-glow">
+                    <div class="text-3xl mb-4">🤷</div>
+                    <h3 class="font-serif text-xl font-semibold mb-2 text-gold">Один на один с собой</h3>
+                    <p class="text-gray-400">Некому спросить, некому подсказать верное направление.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="relative z-10 py-24 px-4 bg-cosmic-purple/20">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-center mb-16">
+                Как это работает
+            </h2>
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="text-center">
+                    <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-gold/20 flex items-center justify-center text-3xl animate-float">
+                        🔢
+                    </div>
+                    <div class="font-serif text-xl font-semibold mb-3 text-gold">1. Введите дату</div>
+                    <p class="text-gray-400">Просто укажите дату рождения — это ключ к вашей уникальной матрице.</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-gold/20 flex items-center justify-center text-3xl animate-float" style="animation-delay: 0.2s;">
+                        🔮
+                    </div>
+                    <div class="font-serif text-xl font-semibold mb-3 text-gold">2. Получите расчёт</div>
+                    <p class="text-gray-400">Нумерологический анализ покажет ваши сильные стороны и потенциал.</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-gold/20 flex items-center justify-center text-3xl animate-float" style="animation-delay: 0.4s;">
+                        💫
+                    </div>
+                    <div class="font-serif text-xl font-semibold mb-3 text-gold">3. Начните рост</div>
+                    <p class="text-gray-400">Примените insights и наблюдайте, как меняется ваша жизнь.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="relative z-10 py-24 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-center mb-4">
+                Выберите свой путь
+            </h2>
+            <p class="text-gray-400 text-center mb-16">Начните бесплатно, развивайтесь по мере роста</p>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Free -->
+                <div class="bg-cosmic-purple/30 border border-white/10 rounded-2xl p-8">
+                    <div class="font-serif text-xl font-semibold mb-2">Free</div>
+                    <div class="text-3xl font-bold mb-6">навсегда</div>
+                    <ul class="space-y-3 mb-8 text-gray-300">
+                        <li class="flex items-center gap-2">
+                            <span class="text-gold">✓</span> Базовый расчёт
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="text-gold">✓</span> Ежедневные энергии
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="text-gold">✓</span> Сообщество
+                        </li>
+                    </ul>
+                    <a href="https://t.me/Celestial_OracleBot" target="_blank"
+                       class="block text-center border border-gold/30 text-gold px-6 py-3 rounded-full font-semibold hover:bg-gold/10 transition-all">
+                        Начать
+                    </a>
+                </div>
+
+                <!-- Premium -->
+                <div class="gradient-border transform md:scale-105">
+                    <div class="gradient-border-inner p-8 h-full">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="font-serif text-xl font-semibold text-gold">Premium</span>
+                            <span class="bg-gold/20 text-gold text-sm px-3 py-1 rounded-full">Популярный</span>
+                        </div>
+                        <div class="text-3xl font-bold mb-6">499₽<span class="text-lg font-normal text-gray-400">/мес</span></div>
+                        <ul class="space-y-3 mb-8 text-gray-300">
+                            <li class="flex items-center gap-2">
+                                <span class="text-gold">✓</span> Всё из Free
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="text-gold">✓</span> Глубокий анализ личности
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="text-gold">✓</span> Прогноз на 90 дней
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="text-gold">✓</span> Compatibility карты
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="text-gold">✓</span> Приоритетная поддержка
+                            </li>
+                        </ul>
+                        <a href="https://t.me/Celestial_OracleBot?start=premium" target="_blank"
+                           class="block text-center bg-gold text-cosmic-dark px-6 py-3 rounded-full font-semibold hover:bg-gold-light transition-all">
+                            Выбрать Premium
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Lifetime -->
+                <div class="bg-cosmic-purple/30 border border-gold/30 rounded-2xl p-8 card-glow">
+                    <div class="font-serif text-xl font-semibold mb-2 text-gold">Lifetime</div>
+                    <div class="text-3xl font-bold mb-6">4,990₽<span class="text-lg font-normal text-gray-400">разово</span></div>
+                    <ul class="space-y-3 mb-8 text-gray-300">
+                        <li class="flex items-center gap-2">
+                            <span class="text-gold">✓</span> Всё из Premium
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="text-gold">✓</span> Всегда доступно
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="text-gold">✓</span> Эксклюзивные insights
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="text-gold">✓</span> Персональные консультации
+                        </li>
+                    </ul>
+                    <a href="https://t.me/Celestial_OracleBot?start=lifetime" target="_blank"
+                       class="block text-center border border-gold text-gold px-6 py-3 rounded-full font-semibold hover:bg-gold/10 transition-all">
+                        Инвестировать в себя
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="relative z-10 py-24 px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold mb-6">
+                Ваша судьба — это не загадка.<br>
+                <span class="text-gold">Это код, который можно декодировать.</span>
+            </h2>
+            <p class="text-xl text-gray-400 mb-8">
+                Присоединяйтесь к 50,000+ людей, которые уже нашли свой путь.
+            </p>
+            <a href="https://t.me/Celestial_OracleBot" target="_blank"
+               class="inline-block bg-gold text-cosmic-dark px-10 py-4 rounded-full font-semibold text-lg hover:bg-gold-light transition-all">
+                🔮 Начать декодировать
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="relative z-10 border-t border-white/10 py-8 px-4">
+        <div class="max-w-6xl mx-auto text-center text-gray-500">
+            <p>© <script>document.write(new Date().getFullYear())</script> Celestial Oracle. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <!-- Stars Animation Script -->
+    <script>
+        const starsContainer = document.getElementById('stars');
+        const numStars = 200;
+
+        for (let i = 0; i < numStars; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            star.style.width = Math.random() * 2 + 1 + 'px';
+            star.style.height = star.style.width;
+            starsContainer.appendChild(star);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Environment
+.env
+.env.local
+
+# Build outputs
+dist/
+.webapp/
+
+# Vercel
+.vercel/
+
+# IDE
+.idea/
+*.swp
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*
