@@ -1,8 +1,12 @@
 {
   "rewrites": [
     {
-      "source": "/app/(.*)",
-      "destination": "/app/$1"
+      "source": "/app/:match*",
+      "destination": "/dist/:match*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/:match*"
     }
   ]
 }
