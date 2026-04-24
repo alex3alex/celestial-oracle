@@ -8,8 +8,8 @@
     "bot": "node bot/index.js",
     "dev": "node --watch bot/index.js",
     "dev:webapp": "vite",
-    "build:webapp": "vite build webapp",
-    "preview:webapp": "vite preview webapp",
+    "build:webapp": "vite build",
+    "preview:webapp": "vite preview",
     "build": "npm run build:webapp",
     "start": "node bot/index.js"
   },
