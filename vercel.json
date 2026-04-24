@@ -2,15 +2,7 @@
   "rewrites": [
     {
       "source": "/app",
-      "destination": "/dist/index.html"
-    },
-    {
-      "source": "/app/:match*",
-      "destination": "/dist/:match*"
-    },
-    {
-      "source": "/assets/:match*",
-      "destination": "/dist/assets/:match*"
+      "destination": "/app/index.html"
     }
   ]
 }
