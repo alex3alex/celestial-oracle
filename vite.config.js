@@ -4,10 +4,8 @@ import { resolve } from 'path';
 
 export default defineConfig({
   plugins: [react()],
-  root: resolve(__dirname, 'webapp'),
-  publicDir: resolve(__dirname, 'webapp/public'),
   build: {
-    outDir: resolve(__dirname, 'webapp/dist'),
+    outDir: 'dist',
     emptyOutDir: true,
     rollupOptions: {
       input: resolve(__dirname, 'webapp/index.html')
